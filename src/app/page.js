@@ -30,7 +30,7 @@ export default function Login() {
   }
 
   return (
-    <div className="caixa">
+    <div className="texto">
       <h1>Login</h1>
       <ToastContainer/>
     </div>
