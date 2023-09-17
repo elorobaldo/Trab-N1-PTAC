@@ -25,13 +25,26 @@ export default function Login() {
       push('/pages/dashboard');
       
     } catch {
-     toast.error("")
+     toast.error("Erro novamente")
     }
   }
 
   return (
     <div className="texto">
       <h1>Login</h1>
+      <form onSubmit={handlerLogin}>
+        <input
+          placeholder='E-mail'
+          type="email"
+          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
+        </input>
+        <input
+          placeholder='Senha'
+          type='password'
+          onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
+        </input>
+        <button className="btn">Entrar</button>
+      </form>
       <ToastContainer/>
     </div>
   )
