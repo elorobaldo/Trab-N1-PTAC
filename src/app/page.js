@@ -33,16 +33,20 @@ export default function Login() {
     <div className="texto">
       <h1>Login</h1>
       <form onSubmit={handlerLogin}>
+      <div class="input-box">
         <input
           placeholder='E-mail'
           type="email"
           onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
         </input>
+        </div>
+        <div class="input-box">
         <input
           placeholder='Senha'
           type='password'
           onChange={(e) => { setUser({ ...user, password: e.target.value }) }}>
         </input>
+        </div>
         <button className="btn">Entrar</button>
       </form>
       <ToastContainer/>
