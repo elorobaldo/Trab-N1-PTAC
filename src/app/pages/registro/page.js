@@ -8,7 +8,7 @@ import Navbar from "@/app/componentes/navbar";
 export default function Registro() {
   function registro(e) {
     e.preventDefault();
-    toast.success("Deu bom");
+    toast.success("User Registrado");
   }
   return (
     <div>
