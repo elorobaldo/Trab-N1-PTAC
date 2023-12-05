@@ -16,12 +16,19 @@ export const middleware = (request) => {
     }
     if (isTokenValidated) {
         if (request.nextUrl.pathname === "/"){
-            return NextResponse.redirect(urlDash)
+            return NextResponse.redirect(urlDash);
         }
     }
+
+    if (!isTokenValidated || !token) {
+        if (request.nextUrl.pathname === '/pages/registro') {
+            return NextResponse.redirect(urlLogin);
+        }
+    }
+
     NextResponse.next();
 };
 export const config = {
-    matcher: ['/', '/pages/:path*']
+    matcher: ['/', '/pages/dashboard', '/pages/alterar', '/pages/registro']
 };
 

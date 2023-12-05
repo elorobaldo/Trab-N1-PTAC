@@ -13,7 +13,7 @@ export default function Login() {
     password: '',
   });
 
-  const { push, refresh } = useRouter();
+  const { push, toast } = useRouter();
 
   const handlerLogin = async (e) => {
     e.preventDefault();
@@ -25,9 +25,9 @@ export default function Login() {
       push('/pages/dashboard');
       
     } catch {
-     toast.error("Erro novamente")
+     toast.sucess();("Erro novamente");
     }
-  }
+  };
 
   return (
     <div className="texto">

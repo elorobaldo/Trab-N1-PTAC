@@ -1,33 +1,49 @@
-'use server'
-const users = [
-    {
-        name:'Stevan', email:'stevan.silva@gmail.com', password:'456',
-        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-       },
-       
-       {
-        name:'Manoel', email:'manoel.gomes@gmail.com', password:'789',
-        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-       },
-       
-       {
-        name:'Eloisa', email:'elo.rob@gmail.com', password:'321',
-        token:'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
-       }
-]
+const url = "https://api-user-backend.vercel.app"
 
 const getUserAuthenticated = (user) => {
-    let userAuth= {}
-for ( let i = 0; i < users.length; i++ ){
-    if (users[i].email === user.email && users[i].password === user.password) {
-        return userAuth = users[i] ;
-    }
- }
- return userAuth
+    try {
+        const responseOfApi = await fetch(url + "/user/authenticated",{
+            method: "POST",
+            headers: { 'Content-Type': 'Application/json'}, 
+            body: JSON.stringify(user)
+        });
+    
+        const userAuth = await responseOfApi.json();
+        console.log ( userAuth )
+        return userAuth;
+    } catch {
+        return null;
+        }
 }
 
 const getUsers = () =>{
-return users;
+    try {
+        const responseOfApi = await fetch(url + "/users",{
+            method: "GET",
+            headers: { 'Content-Type': 'Application/json'}, 
+        });
+    
+        const users = await responseOfApi.json();
+        return users;
+    } catch {
+        return null;
+        }
 }
-export { getUsers, getUserAuthenticated };
+
+const postUser = async (user) => {
+    try {
+        const responseOfApi = await fetch(url + "/users", {
+            method: 'POST',
+            headers:{ 'Content-Type': 'Application/json'},
+            body: JSON.stringify(user)
+        });
+        const userSave = await responseOfApi.json();
+        return userSave;
+    } catch {
+        return null;
+    }
+}
+
+
+export { getUsers, getUserAuthenticated, postUser };
 
