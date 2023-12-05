@@ -1,15 +1,30 @@
-'use client'
+import { postUser } from '@/app/functions/handlerAcessAPI';
+import { useRouter } from 'next/router';
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import React, { useStates } from 'react';
 import '../css/registro.css'
 import Navbar from "@/app/componentes/navbar";
 
 
 export default function Registro() {
-  function registro(e) {
-    e.preventDefault();
-    toast.success("User Registrado");
-  }
+  const [user, setUser] = useStates({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const { push } = useRouter;
+
+  const registro = async (event) => {
+    event.preventDeFault();
+    try {
+      await postUser(user);
+      return push("/pages/dashboard");
+    } catch {
+      return toast.error("Erro");
+    }
+  };
+
   return (
     <div>
      <Navbar/>
@@ -21,7 +36,7 @@ export default function Registro() {
         </div>
         <div class="input-box">
         <p>Email</p>
-        <input type="email" required/>
+        <input type="email" onChange={(e) => { setUser({...user, email: e.target.value }) }}/>
         </div>
         <div class="input-box">
         <p>Senha</p>
