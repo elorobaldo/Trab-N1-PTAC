@@ -15,15 +15,15 @@ export default function Alterar() {
        <Navbar/>
       <form onSubmit={alterar}>
       <div className="texto">
-        <div class="input-box">
+        <div className="input-box">
         <p>Nome</p>
         <input type="name" required/>
         </div>
-        <div class="input-box">
+        <div className="input-box">
         <p>Email</p>
         <input type="email" required/>
         </div>
-        <div class="input-box">
+        <div className="input-box">
         <p>Senha</p>
         <input type="password" required/>
         </div>

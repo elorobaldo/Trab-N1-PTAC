@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './pages/css/login.css'
+import Link from "next/link";
 
 
 export default function Login() {
@@ -13,7 +14,7 @@ export default function Login() {
     password: '',
   });
 
-  const { push, toast } = useRouter();
+  const { push } = useRouter();
 
   const handlerLogin = async (e) => {
     e.preventDefault();
@@ -25,7 +26,7 @@ export default function Login() {
       push('/pages/dashboard');
       
     } catch {
-     toast.sucess();("Erro novamente");
+     toast.error();("Erro novamente");
     }
   };
 
@@ -33,14 +34,14 @@ export default function Login() {
     <div className="texto">
       <h1>Login</h1>
       <form onSubmit={handlerLogin}>
-      <div class="input-box">
+      <div className="input-box">
         <input
           placeholder='E-mail'
           type="email"
           onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
         </input>
         </div>
-        <div class="input-box">
+        <div className="input-box">
         <input
           placeholder='Senha'
           type='password'
