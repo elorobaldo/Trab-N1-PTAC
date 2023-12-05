@@ -1,6 +1,6 @@
 const url = "https://api-user-backend.vercel.app"
 
-const getUserAuthenticated = (user) => {
+const getUserAuthenticated = async (user) => {
     try {
         const responseOfApi = await fetch(url + "/user/authenticated",{
             method: "POST",
@@ -16,7 +16,7 @@ const getUserAuthenticated = (user) => {
         }
 }
 
-const getUsers = () =>{
+const getUsers = async () =>{
     try {
         const responseOfApi = await fetch(url + "/users",{
             method: "GET",

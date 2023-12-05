@@ -3,7 +3,7 @@ import { getUsers } from "@/app/functions/handlerAcessAPI";
 import Navbar from "@/app/componentes/navbar";
 import '../css/home.css'
 
-export default  function Dashboard() {
+export default async  function Dashboard() {
    const users = await getUsers()
     return (
         <div>
