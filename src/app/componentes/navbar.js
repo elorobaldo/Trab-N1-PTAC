@@ -11,7 +11,8 @@ export default function Navbar(){
         e.preventDefault();
         Cookies.remove('token');
         localStorage.removeItem('name');
-        refresh('/')
+        push('/')
+        refresh();
     }
 return(
  <div>
