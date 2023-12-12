@@ -15,7 +15,7 @@ export default function Navbar(){
     }
 return(
  <div>
-     <ul class="navbar" role="navigation">
+     <ul className="navbar" role="navigation">
         <li><a href='/pages/alterar'>Alterar</a></li>
         <li><a href='/pages/dashboard'>Home</a></li>
         <li><a href='/pages/registro'>Registro</a></li>
